@@ -6,19 +6,16 @@ using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace WeatherApi.Apis;
 
-public interface INwsApi
-{
-    Task<OneOf<NwsAlert, NwsError>> Alerts(NwsAlertConfiguration? config = null);
-}
-
 public class NwsApi(HttpClient client) : INwsApi
 {
-    public async Task<OneOf<NwsAlert, NwsError>> Alerts(NwsAlertConfiguration? config = null)
+    public async Task<OneOf<NwsAlert, NwsError>> Alerts() =>
+        await Get<NwsAlert>($"{NwsApiUrl}/alerts");
+
+    public async Task<OneOf<NwsAlert, NwsError>> Alerts(NwsAlertConfiguration config) =>
+        await Get<NwsAlert>($"{NwsApiUrl}/alerts{config.GetQueryString()}");
+
+    private async Task<OneOf<T, NwsError>> Get<T>(string uriString)
     {
-        var uriString = $"{NwsApiUrl}/alerts";
-
-        if (config is not null) uriString += config.GetQueryString();
-
         var request = new HttpRequestMessage
         {
             Method = HttpMethod.Get,
@@ -27,6 +24,6 @@ public class NwsApi(HttpClient client) : INwsApi
         request.Headers.Add("User-Agent", "Insomnia/8.6.1");
 
         var response = await client.SendAsync(request);
-        return (await JsonSerializer.DeserializeAsync<NwsAlert>(await response.Content.ReadAsStreamAsync()))!;
+        return (await JsonSerializer.DeserializeAsync<T>(await response.Content.ReadAsStreamAsync()))!;
     }
 }
