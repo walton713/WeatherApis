@@ -6,7 +6,7 @@ Reference
 
 Namespace: [WeatherApi.Apis](WeatherApi-Apis.md)<br />
 Assembly: WeatherApi<br />
-Source: NwsApi.cs
+Source: [NwsApi.cs](https://github.com/walton713/WeatherApis/blob/master/WeatherApi/Apis/NwsApi.cs)
 
 Provides a class for retrieving weather data from the National Weather Service (NWS) API.
 
@@ -53,5 +53,11 @@ For more information on the NWS API visit [their documentation](https://www.weat
 </table>
 
 <seealso>
-    <!--Provide links to related how-to guides, overviews, and tutorials.-->
+<category ref="wrs">
+<a href="WeatherApi-Apis.md">WeatherApi.Apis Namespace</a>
+<a href="INwsApi.md">INwsApi Interface</a>
+</category>
+<category ref="external">
+<a href="https://www.weather.gov/documentation/services-web-api">NWS API Documentation</a>
+</category>
 </seealso>
