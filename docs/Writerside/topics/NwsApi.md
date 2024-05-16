@@ -4,13 +4,13 @@ Reference
 
 ## Definition
 
-Namespace: WeatherApi.Apis<br />
+Namespace: [WeatherApi.Apis](WeatherApi-Apis.md)<br />
 Assembly: WeatherApi<br />
 Source: NwsApi.cs
 
 Provides a class for retrieving weather data from the National Weather Service (NWS) API.
 
-```c#
+```C#
 public class NwsApi(HttpClient client) : INwsApi
 ```
 
