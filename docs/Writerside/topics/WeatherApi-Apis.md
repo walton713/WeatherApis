@@ -17,7 +17,7 @@ Provides classes for retrieving weather data from different sources.
 
 <table>
 <tr>
-<td>INwsApi</td>
+<td><a href="INwsApi.md">INwsApi</a></td>
 <td>An abstraction for a component that can retrieve weather data from the National Weather Service (NWS) API.</td>
 </tr>
 </table>
